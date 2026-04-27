@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="12dp"
+    app:cardCornerRadius="24dp"
+    android:layout_margin="12dp"
+    app:cardBackgroundColor="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="10dp">
+
+        <!-- Home Tab -->
+        <LinearLayout
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="6dp"
+            android:background="?attr/selectableItemBackgroundBorderless">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/navHomeIconBg"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#E8F5F7">
+
+                <ImageView
+                    android:id="@+id/navHomeIcon"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_home"
+                    app:tint="#1BA3C4" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/navHomeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textSize="10sp"
+                android:textColor="#1BA3C4"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Tracking Tab -->
+        <LinearLayout
+            android:id="@+id/navTracking"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="6dp"
+            android:background="?attr/selectableItemBackgroundBorderless">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/navTrackingIconBg"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#F5F8FA">
+
+                <ImageView
+                    android:id="@+id/navTrackingIcon"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_tracking"
+                    app:tint="#6B7280" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/navTrackingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tracking"
+                android:textSize="10sp"
+                android:textColor="#6B7280"
+                android:fontFamily="sans-serif"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Appointments Tab -->
+        <LinearLayout
+            android:id="@+id/navAppt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="6dp"
+            android:background="?attr/selectableItemBackgroundBorderless">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/navApptIconBg"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#F5F8FA">
+
+                <ImageView
+                    android:id="@+id/navApptIcon"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_appointment"
+                    app:tint="#6B7280" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/navApptText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Appt."
+                android:textSize="10sp"
+                android:textColor="#6B7280"
+                android:fontFamily="sans-serif"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Orders Tab -->
+        <LinearLayout
+            android:id="@+id/navOrders"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="6dp"
+            android:background="?attr/selectableItemBackgroundBorderless">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/navOrdersIconBg"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#F5F8FA">
+
+                <ImageView
+                    android:id="@+id/navOrdersIcon"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_orders"
+                    app:tint="#6B7280" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/navOrdersText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Orders"
+                android:textSize="10sp"
+                android:textColor="#6B7280"
+                android:fontFamily="sans-serif"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- AI Tab -->
+        <LinearLayout
+            android:id="@+id/navAi"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="6dp"
+            android:background="?attr/selectableItemBackgroundBorderless">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/navAiIconBg"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#F5F8FA">
+
+                <ImageView
+                    android:id="@+id/navAiIcon"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_ai"
+                    app:tint="#6B7280" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/navAiText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AI"
+                android:textSize="10sp"
+                android:textColor="#6B7280"
+                android:fontFamily="sans-serif"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

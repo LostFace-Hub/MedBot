@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Medora</string>
+    <string name="welcome_title">Welcome to Medora!</string>
+    <string name="welcome_subtitle">Your one-stop solution for health tracking and management.</string>
+    <string name="get_started">Get Started</string>
+    <string name="doctors_illustration_desc">Illustration of doctors</string>
+    <string name="splash_logo_description">Splash screen logo</string>
+    <string name="theme_switcher_desc">Switch between light and dark mode</string>
+
+    <string name="appointment_title">Appointment</string>
+    <string name="book_appointment">Book Appointment</string>
+    <string name="confirm_booking">Confirm Booking</string>
+    <string name="join_now">Join Now</string>
+    <string name="view_hist">View Hist</string>
+</resources>

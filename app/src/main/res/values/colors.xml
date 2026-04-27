@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primary">#54A0FF</color>
+    <color name="primary_dark">#2E86DE</color>
+    <color name="splash_background">#39A9C2</color>
+    <color name="get_started_button_background">#508C9B</color>
+    <color name="text_secondary">#757575</color>
+    <color name="toggle_inactive">#4E7A85</color>
+
+    <color name="bg_light">#F3F9FA</color>
+    <color name="primary_text">#072C43</color>
+    <color name="secondary_text">#527A89</color>
+
+    <color name="green">#00C177</color>
+    <color name="yellow">#F9D438</color>
+    <color name="red">#FF4B4B</color>
+
+    <color name="card_bg_fill">#F4FBFF</color>
+
+
+    <color name="bg">#F7FBFC</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="muted_text">#6B7280</color>
+    <color name="title_text">#072C43</color>
+    <color name="accent">#1FA9C1</color>
+    <color name="accent_dark">#1493A6</color>
+    <color name="pill_bg">#E8F5F7</color>
+    <color name="shadow">#33000000</color>
+    <color name="danger">#E14D4D</color>
+    <color name="success">#4CAF50</color>
+    
+    <!-- Additional text colors -->
+    <color name="textPrimary">#072C43</color>
+    <color name="textSecondary">#6B7280</color>
+    <color name="textTertiary">#9CA3AF</color>
+    <color name="error">#E14D4D</color>
+</resources>

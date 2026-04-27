@@ -1,0 +1,971 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:fitsSystemWindows="true">
+
+    <!-- Compact Header with gradient background -->
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingVertical="16dp"
+        android:paddingHorizontal="20dp"
+        android:background="@drawable/bg_gradient2"
+        android:elevation="4dp">
+
+        <TextView
+            android:id="@+id/tvGreeting"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Good Morning, Aayan!"
+            android:textColor="#072C43"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" />
+
+        <!-- Notification -->
+        <FrameLayout
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/notification_bg"
+            android:padding="12dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/ivNotification"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_bell_blue"
+                android:scaleType="centerInside"
+                app:tint="#1BA3C4" />
+
+            <View
+                android:id="@+id/redDot"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_gravity="top|end"
+                android:background="@drawable/red_dot_circle"
+                android:translationX="2dp"
+                android:translationY="-2dp"
+                android:visibility="visible" />
+        </FrameLayout>
+
+        <!-- Profile -->
+        <ImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/profile_round"
+            android:padding="2dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile_pic"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
+
+    <!-- Search + Tabs + Filters -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingHorizontal="20dp">
+
+            <!-- Search Box -->
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:queryHint="Search your health data..."
+                android:iconifiedByDefault="false"
+                android:background="@drawable/search_box"
+                android:elevation="2dp"
+                app:queryBackground="@android:color/transparent"
+                app:searchIcon="@drawable/ic_search"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"/>
+
+            <!-- Tabs + Time Filters Container -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/card_bg"
+                android:padding="12dp"
+                android:elevation="1dp">
+
+                <!-- Tabs Row -->
+                <LinearLayout
+                    android:id="@+id/tabsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:background="#F0F8FA"
+                    android:padding="4dp">
+
+                    <TextView
+                        android:id="@+id/tabTrends"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Trends"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:background="@drawable/tab_active_left"
+                        android:clickable="true"
+                        android:focusable="true"/>
+
+                    <TextView
+                        android:id="@+id/tabStats"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Statistics"
+                        android:textColor="#527A89"
+                        android:textSize="14sp"
+                        android:background="@drawable/tab_middle"
+                        android:clickable="true"
+                        android:focusable="true"/>
+
+                    <TextView
+                        android:id="@+id/tabInsights"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Insights"
+                        android:textColor="#527A89"
+                        android:textSize="14sp"
+                        android:background="@drawable/tab_right"
+                        android:clickable="true"
+                        android:focusable="true"/>
+                </LinearLayout>
+
+                <!-- Time Filter Chips -->
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/timeFilters"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnDaily"
+                            style="@style/FilterButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Daily"
+                            android:paddingHorizontal="20dp"
+                            android:background="@drawable/filter_active"
+                            android:backgroundTint="@null"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="bold"
+                            android:textSize="13sp"
+                            android:elevation="2dp"/>
+
+                        <Button
+                            android:id="@+id/btnWeekly"
+                            style="@style/FilterButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Weekly"
+                            android:paddingHorizontal="20dp"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/filter_inactive"
+                            android:backgroundTint="@null"
+                            android:textColor="#527A89"
+                            android:textSize="13sp"/>
+
+                        <Button
+                            android:id="@+id/btnMonthly"
+                            style="@style/FilterButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Monthly"
+                            android:paddingHorizontal="20dp"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/filter_inactive"
+                            android:backgroundTint="@null"
+                            android:textColor="#527A89"
+                            android:textSize="13sp"/>
+
+                        <Button
+                            android:id="@+id/btnYearly"
+                            style="@style/FilterButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Yearly"
+                            android:paddingHorizontal="20dp"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/filter_inactive"
+                            android:backgroundTint="@null"
+                            android:textColor="#527A89"
+                            android:textSize="13sp"/>
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+            </LinearLayout>
+
+            <!-- Heart Rate Card - Premium Design -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardHeart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- Card Header -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_heart"
+                            app:tint="#FF4B4B"/>
+
+                        <TextView
+                            android:id="@+id/tvHeartTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="12dp"
+                            android:text="Heart Rate"
+                            android:textColor="#072C43"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:fontFamily="sans-serif-medium"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Live"
+                            android:textSize="12sp"
+                            android:textColor="#00C177"
+                            android:textStyle="bold"
+                            android:background="@drawable/live_badge"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="4dp"/>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="8dp"
+                            android:src="@drawable/ic_arrow_right"
+                            app:tint="#6B7280"/>
+                    </LinearLayout>
+
+                    <!-- Chart + Stats Container -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="20dp">
+
+                        <!-- Pie Chart -->
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="160dp"
+                            android:layout_weight="1.2">
+
+                            <com.github.mikephil.charting.charts.PieChart
+                                android:id="@+id/pieHeart"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
+                        </FrameLayout>
+
+                        <!-- Stats Column -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingStart="20dp">
+
+                            <TextView
+                                android:id="@+id/tvHeartValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="75"
+                                android:textSize="42sp"
+                                android:textStyle="bold"
+                                android:textColor="#00C177"
+                                android:fontFamily="sans-serif"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="bpm"
+                                android:textSize="16sp"
+                                android:textColor="#527A89"
+                                android:layout_marginTop="-8dp"/>
+
+                            <View
+                                android:layout_width="40dp"
+                                android:layout_height="3dp"
+                                android:background="#00C177"
+                                android:layout_marginTop="12dp"/>
+
+                            <TextView
+                                android:id="@+id/tvHeartStatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Excellent"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:textColor="#072C43"
+                                android:layout_marginTop="12dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Normal range"
+                                android:textSize="12sp"
+                                android:textColor="#527A89"
+                                android:layout_marginTop="4dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Legend with modern design -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="24dp"
+                        android:padding="16dp"
+                        android:background="@drawable/legend_bg">
+
+                        <LinearLayout 
+                            android:orientation="horizontal" 
+                            android:layout_width="match_parent" 
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical">
+                            
+                            <View 
+                                android:layout_width="12dp" 
+                                android:layout_height="12dp" 
+                                android:background="@drawable/legend_green"/>
+                            
+                            <TextView 
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp" 
+                                android:text="Steady (60-100 bpm)" 
+                                android:textColor="#527A89"
+                                android:textSize="13sp"/>
+                        </LinearLayout>
+
+                        <LinearLayout 
+                            android:orientation="horizontal" 
+                            android:layout_width="match_parent" 
+                            android:layout_height="wrap_content" 
+                            android:layout_marginTop="10dp"
+                            android:gravity="center_vertical">
+                            
+                            <View 
+                                android:layout_width="12dp" 
+                                android:layout_height="12dp" 
+                                android:background="@drawable/legend_yellow"/>
+                            
+                            <TextView 
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp" 
+                                android:text="Irregular (101-120 bpm)" 
+                                android:textColor="#527A89"
+                                android:textSize="13sp"/>
+                        </LinearLayout>
+
+                        <LinearLayout 
+                            android:orientation="horizontal" 
+                            android:layout_width="match_parent" 
+                            android:layout_height="wrap_content" 
+                            android:layout_marginTop="10dp"
+                            android:gravity="center_vertical">
+                            
+                            <View 
+                                android:layout_width="12dp" 
+                                android:layout_height="12dp" 
+                                android:background="@drawable/legend_red"/>
+                            
+                            <TextView 
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp" 
+                                android:text="Critical (>120 bpm)" 
+                                android:textColor="#527A89"
+                                android:textSize="13sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Blood Pressure Card - Modern Design -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardBP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- Card Header -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_vitals"
+                            app:tint="#1BA3C4"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="12dp"
+                            android:text="Blood Pressure"
+                            android:textStyle="bold"
+                            android:textColor="#072C43"
+                            android:textSize="18sp"
+                            android:fontFamily="sans-serif-medium"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="120/80"
+                            android:textSize="18sp"
+                            android:textColor="#00C177"
+                            android:textStyle="bold"/>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="8dp"
+                            android:src="@drawable/ic_arrow_right"
+                            app:tint="#6B7280"/>
+                    </LinearLayout>
+
+                    <!-- Bar Chart -->
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barBP"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:layout_marginTop="16dp"/>
+
+                    <!-- Legend -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="16dp"
+                        android:padding="16dp"
+                        android:background="@drawable/legend_bg">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <View
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:background="@drawable/legend_green"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Balanced: 90/60 - 120/80"
+                                android:textColor="#527A89"
+                                android:textSize="13sp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="10dp">
+
+                            <View
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:background="@drawable/legend_yellow"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Elevated: 121/81 - 140/90"
+                                android:textColor="#527A89"
+                                android:textSize="13sp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="10dp">
+
+                            <View
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:background="@drawable/legend_red"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Danger: > 140/90"
+                                android:textColor="#527A89"
+                                android:textSize="13sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Steps + Calories Grid -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:weightSum="2">
+
+                <!-- Steps Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardSteps"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="3dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_steps"
+                            app:tint="#1BA3C4"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Steps Today"
+                                android:textStyle="bold"
+                                android:textColor="#072C43"
+                                android:textSize="15sp"/>
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#6B7280"/>
+                        </LinearLayout>
+
+                        <com.github.mikephil.charting.charts.BarChart
+                            android:id="@+id/barSteps"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="12dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="8,547"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                android:textColor="#00C177"/>
+
+                            <TextView
+                                android:id="@+id/tvStepsStatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Active"
+                                android:textSize="12sp"
+                                android:textColor="#00C177"
+                                android:textStyle="bold"
+                                android:background="@drawable/status_badge"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Calories Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardCalories"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="3dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_calories"
+                            app:tint="#FF4B4B"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Calories"
+                                android:textStyle="bold"
+                                android:textColor="#072C43"
+                                android:textSize="15sp"/>
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#6B7280"/>
+                        </LinearLayout>
+
+                        <com.github.mikephil.charting.charts.BarChart
+                            android:id="@+id/barCalories"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="12dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="1,247"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                android:textColor="#FF4B4B"/>
+
+                            <TextView
+                                android:id="@+id/tvCaloriesStatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Burning"
+                                android:textSize="12sp"
+                                android:textColor="#FF4B4B"
+                                android:textStyle="bold"
+                                android:background="@drawable/status_badge_red"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- Sleep + Oxygen Grid -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:weightSum="2">
+
+                <!-- Sleep Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardSleep"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="3dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_watch"
+                            app:tint="#9C27B0"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Sleep Quality"
+                                android:textStyle="bold"
+                                android:textColor="#072C43"
+                                android:textSize="15sp"/>
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#6B7280"/>
+                        </LinearLayout>
+
+                        <com.github.mikephil.charting.charts.BarChart
+                            android:id="@+id/barSleep"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="12dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="7.2h"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                android:textColor="#9C27B0"/>
+
+                            <TextView
+                                android:id="@+id/tvSleepStatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rested"
+                                android:textSize="12sp"
+                                android:textColor="#9C27B0"
+                                android:textStyle="bold"
+                                android:background="@drawable/status_badge_purple"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Oxygen Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardOxygen"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="3dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_drop"
+                            app:tint="#00BCD4"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Oxygen Level"
+                                android:textStyle="bold"
+                                android:textColor="#072C43"
+                                android:textSize="15sp"/>
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#6B7280"/>
+                        </LinearLayout>
+
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:id="@+id/pieOxygen"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="12dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="98%"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                android:textColor="#00BCD4"/>
+
+                            <TextView
+                                android:id="@+id/tvOxygenStatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Optimal"
+                                android:textSize="12sp"
+                                android:textColor="#00BCD4"
+                                android:textStyle="bold"
+                                android:background="@drawable/status_badge_cyan"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- Bottom Spacing -->
+            <View
+                android:layout_height="24dp"
+                android:layout_width="match_parent"/>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Navigation -->
+    <include
+        layout="@layout/layout_bottom_nav"
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
