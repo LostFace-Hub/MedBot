@@ -209,15 +209,15 @@ npm start
 
 ## 👤 About Developer
 
-**Aayan Kumar**
+**Shivam Singh**
 B.Tech CSE — Lovely Professional University
 
 * 💻 Full Stack Developer
 * 🤖 AI + Healthcare Enthusiast
 * 🚀 Building scalable real-world projects
 
-🔗 GitHub: https://github.com/AayZen
-🔗 LinkedIn: https://www.linkedin.com/in/aayzen/
+🔗 GitHub: https://github.com/LostFace-Hub
+🔗 LinkedIn:https://www.linkedin.com/in/shivam-singh-ofs
 
 ---
 
@@ -225,7 +225,7 @@ B.Tech CSE — Lovely Professional University
 
 MIT License
 
-Copyright (c) 2025 Aayan Kumar
+Copyright (c) 2025 Shivam Singh
 
 ---
 
