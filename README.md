@@ -184,7 +184,7 @@ Medora/
 
 ```bash
 # Clone repository
-git clone https://github.com/AayZen/Medora.git
+[git clone https://github.com/LostFace-Hub/MedBot.git
 
 # Backend setup
 cd backend
